@@ -2,8 +2,8 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
 # Device identifier. This must come after all inclusions
-PRODUCT_NAME := omni_sirius
-PRODUCT_DEVICE := sirius
+PRODUCT_NAME := omni_xmsirius
+PRODUCT_DEVICE := xmsirius
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := MI 8 SE
 PRODUCT_MANUFACTURER := Xiaomi
@@ -20,6 +20,8 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.service.adb.enable=1 \
     persist.service.debuggable=1
 
-TARGET_VENDOR_PRODUCT_NAME := sirius
-TARGET_VENDOR_DEVICE_NAME := sirius
-PRODUCT_BUILD_PROP_OVERRIDES += TARGET_DEVICE=sirius PRODUCT_NAME=sirius
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    TARGET_DEVICE=sirius \
+    PRODUCT_NAME=sirius \
+    TARGET_VENDOR_PRODUCT_NAME=sirius \
+    TARGET_VENDOR_DEVICE_NAME=sirius

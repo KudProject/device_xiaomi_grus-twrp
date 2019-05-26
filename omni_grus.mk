@@ -32,3 +32,7 @@ PRODUCT_MANUFACTURER := Xiaomi
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.treble.enabled=true \
     sys.usb.controller=a600000.dwc3
+
+# HACK: Set vendor patch level
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.build.security_patch=2099-12-31

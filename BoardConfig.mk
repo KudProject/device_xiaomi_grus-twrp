@@ -112,3 +112,6 @@ TW_EXCLUDE_DEFAULT_USB_INIT := true
 TW_USE_TOOLBOX := true
 TW_Y_OFFSET := 80
 TW_H_OFFSET := -80
+
+# Hack: prevent anti rollback
+PLATFORM_SECURITY_PATCH := 2099-12-31

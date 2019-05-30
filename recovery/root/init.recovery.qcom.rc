@@ -4,11 +4,15 @@ on early-init
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
+    export ANDROID_ROOT /system_root
     chmod 0660 /dev/qseecom
     chown system drmrpc /dev/qseecom
     chmod 0664 /dev/ion
     chown system system /dev/ion
     install_keyring
+
+    # libsecureui.so requires vendor copy of libhidlbase.so; just bind mount it
+    mount none /sbin/libhidlbase.so /vendor/lib64/libhidlbase.so
 
     # Only needed when we don't include all required blobs for crypto
     start prepdecrypt
@@ -59,7 +63,7 @@ service gatekeeper-1-0 /sbin/android.hardware.gatekeeper@1.0-service-qti
     disabled
     seclabel u:r:recovery:s0
 
-service keymaster-3-0 /sbin/android.hardware.keymaster@3.0-service-qti
+service keymaster-4-0 /sbin/android.hardware.keymaster@4.0-service-qti
     user root
     group root
     disabled
@@ -69,11 +73,10 @@ on boot
     # Workaround for adb not coming up
     setprop sys.usb.config mtp,adb
     setprop sys.usb.config adb
-    setprop sys.usb.configfs 1
 
 on property:crypto.ready=0
     stop sbinqseecomd
-    stop keymaster-3-0
+    stop keymaster-4-0
     stop gatekeeper-1-0
     stop hwservicemanager
     stop keystore
@@ -82,55 +85,8 @@ on property:crypto.ready=0
 on property:crypto.ready=1
     start sbinqseecomd
 
-on property:sys.listeners.registered=true
+on property:vendor.sys.listeners.registered=true
     start hwservicemanager
-    start keymaster-3-0
+    start keymaster-4-0
     start gatekeeper-1-0
     start servicemanager
-
-on boot
-    # Enable Power modes and set the CPU Freq Sampling rates
-    write /sys/module/msm_thermal/core_control/enabled 0
-    write /sys/devices/system/cpu/cpu1/online 1
-    write /sys/devices/system/cpu/cpu2/online 1
-    write /sys/devices/system/cpu/cpu3/online 1
-    write /sys/devices/system/cpu/cpu4/online 1
-    write /sys/devices/system/cpu/cpu5/online 1
-    write /sys/devices/system/cpu/cpu6/online 1
-    write /sys/devices/system/cpu/cpu7/online 1
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "ondemand"
-    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor "ondemand"
-    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor "ondemand"
-    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor "ondemand"
-    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor "ondemand"
-    write /sys/devices/system/cpu/cpu5/cpufreq/scaling_governor "ondemand"
-    write /sys/devices/system/cpu/cpu6/cpufreq/scaling_governor "ondemand"
-    write /sys/devices/system/cpu/cpu7/cpufreq/scaling_governor "ondemand"
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 300000
-    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq 300000
-    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 300000
-    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq 300000
-    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 300000
-    write /sys/devices/system/cpu/cpu5/cpufreq/scaling_min_freq 300000
-    write /sys/devices/system/cpu/cpu6/cpufreq/scaling_min_freq 300000
-    write /sys/devices/system/cpu/cpu7/cpufreq/scaling_min_freq 300000
-    write /sys/module/msm_thermal/core_control/enabled 1
-    setprop recovery.perf.mode 0
-
-on property:recovery.perf.mode=1
-    write /sys/devices/system/cpu/cpu1/online 1
-    write /sys/devices/system/cpu/cpu2/online 1
-    write /sys/devices/system/cpu/cpu3/online 0
-    write /sys/devices/system/cpu/cpu4/online 1
-    write /sys/devices/system/cpu/cpu5/online 1
-    write /sys/devices/system/cpu/cpu6/online 1
-    write /sys/devices/system/cpu/cpu7/online 0
-
-on property:recovery.perf.mode=0
-    write /sys/devices/system/cpu/cpu1/online 1
-    write /sys/devices/system/cpu/cpu2/online 0
-    write /sys/devices/system/cpu/cpu3/online 0
-    write /sys/devices/system/cpu/cpu4/online 1
-    write /sys/devices/system/cpu/cpu5/online 1
-    write /sys/devices/system/cpu/cpu6/online 0
-    write /sys/devices/system/cpu/cpu7/online 0

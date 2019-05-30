@@ -1,4 +1,4 @@
-<manifest version="1.0" type="device" target-level="2">
+<manifest version="1.0" type="device" target-level="3">
     <hal format="hidl">
         <name>android.hardware.audio</name>
         <transport>hwbinder</transport>
@@ -38,16 +38,6 @@
             <instance>default</instance>
         </interface>
         <fqname>@1.0::IBluetoothHci/default</fqname>
-    </hal>
-    <hal format="hidl">
-        <name>android.hardware.boot</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IBootControl</name>
-            <instance>default</instance>
-        </interface>
-        <fqname>@1.0::IBootControl/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.camera.provider</name>
@@ -107,6 +97,16 @@
         <fqname>@1.1::ICryptoFactory/widevine</fqname>
         <fqname>@1.1::IDrmFactory/clearkey</fqname>
         <fqname>@1.1::IDrmFactory/widevine</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>android.hardware.dumpstate</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IDumpstateDevice</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>@1.0::IDumpstateDevice/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.gatekeeper</name>
@@ -182,12 +182,12 @@
     <hal format="hidl">
         <name>android.hardware.keymaster</name>
         <transport>hwbinder</transport>
-        <version>3.0</version>
+        <version>4.0</version>
         <interface>
             <name>IKeymasterDevice</name>
             <instance>default</instance>
         </interface>
-        <fqname>@3.0::IKeymasterDevice/default</fqname>
+        <fqname>@4.0::IKeymasterDevice/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.light</name>
@@ -233,6 +233,16 @@
             <instance>default</instance>
         </interface>
         <fqname>@1.1::IDevice/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>android.hardware.nfc</name>
+        <transport>hwbinder</transport>
+        <version>1.1</version>
+        <interface>
+            <name>INfc</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>@1.1::INfc/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.power</name>
@@ -282,6 +292,18 @@
             <instance>default</instance>
         </interface>
         <fqname>@1.0::IDevice/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>android.hardware.secure_element</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>ISecureElement</name>
+            <instance>SIM1</instance>
+            <instance>eSE1</instance>
+        </interface>
+        <fqname>@1.0::ISecureElement/SIM1</fqname>
+        <fqname>@1.0::ISecureElement/eSE1</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.sensors</name>
@@ -384,46 +406,6 @@
         <fqname>@1.1::ISupplicant/default</fqname>
     </hal>
     <hal format="hidl">
-        <name>com.fingerprints.extension</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IFingerprintAuthenticator</name>
-            <instance>default</instance>
-        </interface>
-        <interface>
-            <name>IFingerprintCalibration</name>
-            <instance>default</instance>
-        </interface>
-        <interface>
-            <name>IFingerprintEngineering</name>
-            <instance>default</instance>
-        </interface>
-        <interface>
-            <name>IFingerprintNavigation</name>
-            <instance>default</instance>
-        </interface>
-        <interface>
-            <name>IFingerprintRecalibration</name>
-            <instance>default</instance>
-        </interface>
-        <interface>
-            <name>IFingerprintSenseTouch</name>
-            <instance>default</instance>
-        </interface>
-        <interface>
-            <name>IFingerprintSensorTest</name>
-            <instance>default</instance>
-        </interface>
-        <fqname>@1.0::IFingerprintAuthenticator/default</fqname>
-        <fqname>@1.0::IFingerprintCalibration/default</fqname>
-        <fqname>@1.0::IFingerprintEngineering/default</fqname>
-        <fqname>@1.0::IFingerprintNavigation/default</fqname>
-        <fqname>@1.0::IFingerprintRecalibration/default</fqname>
-        <fqname>@1.0::IFingerprintSenseTouch/default</fqname>
-        <fqname>@1.0::IFingerprintSensorTest/default</fqname>
-    </hal>
-    <hal format="hidl">
         <name>com.qualcomm.qti.bluetooth_audio</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -446,12 +428,12 @@
     <hal format="hidl">
         <name>com.qualcomm.qti.imscmservice</name>
         <transport>hwbinder</transport>
-        <version>2.0</version>
+        <version>2.1</version>
         <interface>
             <name>IImsCmService</name>
             <instance>qti.ims.connectionmanagerservice</instance>
         </interface>
-        <fqname>@2.0::IImsCmService/qti.ims.connectionmanagerservice</fqname>
+        <fqname>@2.1::IImsCmService/qti.ims.connectionmanagerservice</fqname>
     </hal>
     <hal format="hidl">
         <name>com.qualcomm.qti.uceservice</name>
@@ -491,12 +473,12 @@
     <hal format="hidl">
         <name>vendor.display.config</name>
         <transport>hwbinder</transport>
-        <version>1.2</version>
+        <version>1.6</version>
         <interface>
             <name>IDisplayConfig</name>
             <instance>default</instance>
         </interface>
-        <fqname>@1.2::IDisplayConfig/default</fqname>
+        <fqname>@1.6::IDisplayConfig/default</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.display.postproc</name>
@@ -509,14 +491,34 @@
         <fqname>@1.0::IDisplayPostproc/default</fqname>
     </hal>
     <hal format="hidl">
-        <name>vendor.goodix.hardware.fingerprintextension</name>
+        <name>vendor.goodix.hardware.biometrics.fingerprint</name>
+        <transport>hwbinder</transport>
+        <version>2.1</version>
+        <interface>
+            <name>IGoodixFingerprintDaemon</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>@2.1::IGoodixFingerprintDaemon/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.nxp.hardware.nfc</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
         <interface>
-            <name>IGoodixBiometricsFingerprint</name>
+            <name>INqNfc</name>
             <instance>default</instance>
         </interface>
-        <fqname>@1.0::IGoodixBiometricsFingerprint/default</fqname>
+        <fqname>@1.0::INqNfc/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.nxp.nxpnfc</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>INxpNfc</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>@1.0::INxpNfc/default</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.qti.data.factory</name>
@@ -559,6 +561,18 @@
         <fqname>@1.0::IAlarm/default</fqname>
     </hal>
     <hal format="hidl">
+        <name>vendor.qti.hardware.data.connection</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IDataConnection</name>
+            <instance>slot1</instance>
+            <instance>slot2</instance>
+        </interface>
+        <fqname>@1.0::IDataConnection/slot1</fqname>
+        <fqname>@1.0::IDataConnection/slot2</fqname>
+    </hal>
+    <hal format="hidl">
         <name>vendor.qti.hardware.data.latency</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -577,16 +591,6 @@
             <instance>default</instance>
         </interface>
         <fqname>@1.0::IFactory/default</fqname>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.qti.hardware.limits</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IThermal</name>
-            <instance>default</instance>
-        </interface>
-        <fqname>@1.0::IThermal/default</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.qti.hardware.perf</name>
@@ -686,14 +690,14 @@
     <hal format="hidl">
         <name>vendor.qti.hardware.radio.qtiradio</name>
         <transport>hwbinder</transport>
-        <version>2.0</version>
+        <version>2.1</version>
         <interface>
             <name>IQtiRadio</name>
             <instance>slot1</instance>
             <instance>slot2</instance>
         </interface>
-        <fqname>@2.0::IQtiRadio/slot1</fqname>
-        <fqname>@2.0::IQtiRadio/slot2</fqname>
+        <fqname>@2.1::IQtiRadio/slot1</fqname>
+        <fqname>@2.1::IQtiRadio/slot2</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.qti.hardware.radio.uim</name>
@@ -710,14 +714,14 @@
     <hal format="hidl">
         <name>vendor.qti.hardware.radio.uim_remote_client</name>
         <transport>hwbinder</transport>
-        <version>1.1</version>
+        <version>1.0</version>
         <interface>
             <name>IUimRemoteServiceClient</name>
             <instance>uimRemoteClient0</instance>
             <instance>uimRemoteClient1</instance>
         </interface>
-        <fqname>@1.1::IUimRemoteServiceClient/uimRemoteClient0</fqname>
-        <fqname>@1.1::IUimRemoteServiceClient/uimRemoteClient1</fqname>
+        <fqname>@1.0::IUimRemoteServiceClient/uimRemoteClient0</fqname>
+        <fqname>@1.0::IUimRemoteServiceClient/uimRemoteClient1</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.qti.hardware.radio.uim_remote_server</name>
@@ -842,6 +846,16 @@
         <fqname>@1.0::IDisplayFeature/default</fqname>
     </hal>
     <hal format="hidl">
+        <name>vendor.xiaomi.hardware.fingerprintextension</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IXiaomiFingerprint</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>@1.0::IXiaomiFingerprint/default</fqname>
+    </hal>
+    <hal format="hidl">
         <name>vendor.xiaomi.hardware.mfidoca</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -850,6 +864,26 @@
             <instance>default</instance>
         </interface>
         <fqname>@1.0::IFidoService/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.xiaomi.hardware.misys</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IMiSys</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>@1.0::IMiSys/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.xiaomi.hardware.misys</name>
+        <transport>hwbinder</transport>
+        <version>2.0</version>
+        <interface>
+            <name>IMiSys</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>@2.0::IMiSys/default</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.xiaomi.hardware.mlipay</name>
@@ -864,12 +898,12 @@
     <hal format="hidl">
         <name>vendor.xiaomi.hardware.mtdservice</name>
         <transport>hwbinder</transport>
-        <version>1.1</version>
+        <version>1.2</version>
         <interface>
             <name>IMTService</name>
             <instance>default</instance>
         </interface>
-        <fqname>@1.1::IMTService/default</fqname>
+        <fqname>@1.2::IMTService/default</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.xiaomi.hardware.tidaservice</name>
@@ -880,6 +914,16 @@
             <instance>default</instance>
         </interface>
         <fqname>@1.1::ITidaService/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.xiaomi.hardware.touchfeature</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>ITouchFeature</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>@1.0::ITouchFeature/default</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.xiaomi.hardware.vsimapp</name>

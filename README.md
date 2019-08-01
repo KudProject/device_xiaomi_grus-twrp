@@ -8,6 +8,4 @@ To compile:
 . build/envsetup.sh && breakfast grus eng && mka recoveryimage
 ```
 
-Kernel source: Prebuilt, extracted from [miui_GRUS_9.5.30_fadcc8f3d6_9.0.zip](http://bigota.d.miui.com/9.5.30/miui_GRUS_9.5.30_fadcc8f3d6_9.0.zip)
-
-OSS kernel from Xiaomi as a reference: [grus-p-oss](https://github.com/MiCode/Xiaomi_Kernel_OpenSource/tree/grus-p-oss)
+Kernel source: [KudProject/kernel_xiaomi_sdm710](https://github.com/KudProject/kernel_xiaomi_sdm710)

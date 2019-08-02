@@ -12,7 +12,7 @@ on fs
     install_keyring
 
     # libsecureui.so requires vendor copy of libhidlbase.so; just bind mount it
-    mount none /sbin/libhidlbase.so /vendor/lib64/libhidlbase.so
+    mount none /sbin/libhidlbase.so /vendor/lib64/libhidlbase.so bind
 
     setprop crypto.ready 1
 

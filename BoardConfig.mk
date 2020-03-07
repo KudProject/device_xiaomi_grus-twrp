@@ -68,6 +68,9 @@ BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/dtbo.img
 TARGET_BOARD_PLATFORM := sdm710
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno616
 
+# Encryption
+PLATFORM_SECURITY_PATCH := 2099-12-31
+
 # Partitions
 BOARD_FLASH_BLOCK_SIZE := 262144
 
@@ -88,14 +91,6 @@ TARGET_USERIMAGES_USE_F2FS := true
 # Workaround for error copying vendor files to recovery ramdisk
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 TARGET_COPY_OUT_VENDOR := vendor
-
-# Recovery
-BOARD_HAS_LARGE_FILESYSTEM := true
-BOARD_HAS_NO_SELECT_BUTTON := true
-
-# Android Verified Boot
-BOARD_AVB_ENABLE := false
-BOARD_BUILD_DISABLED_VBMETAIMAGE := true
 
 # Crypto
 TW_INCLUDE_CRYPTO := true
@@ -118,8 +113,5 @@ TW_H_OFFSET := -80
 TW_CUSTOM_CPU_TEMP_PATH := /sys/devices/virtual/thermal/thermal_zone9/temp
 
 TW_EXCLUDE_TWRPAPP := true
-
-# Hack: prevent anti rollback
-PLATFORM_SECURITY_PATCH := 2099-12-31
 
 -include vendor/kud/config/recovery.mk

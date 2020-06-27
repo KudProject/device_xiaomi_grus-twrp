@@ -116,3 +116,6 @@ TW_CUSTOM_CPU_TEMP_PATH := /sys/devices/virtual/thermal/thermal_zone9/temp
 TW_EXCLUDE_TWRPAPP := true
 
 -include vendor/kud/config/recovery.mk
+
+TARGET_USES_LOGD := true
+TWRP_INCLUDE_LOGCAT := true

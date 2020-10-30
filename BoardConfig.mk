@@ -123,6 +123,3 @@ TW_RECOVERY_ADDITIONAL_RELINK_FILES += $(TARGET_OUT_SHARED_LIBRARIES)/libxml2.so
 TW_EXCLUDE_TWRPAPP := true
 
 -include vendor/kud/config/recovery.mk
-
-TARGET_USES_LOGD := true
-TWRP_INCLUDE_LOGCAT := true

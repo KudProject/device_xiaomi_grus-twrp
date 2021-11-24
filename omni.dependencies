@@ -1,0 +1,8 @@
+[
+  {
+    "repository": "android_vendor_qcom_opensource_interfaces",
+    "target_path": "vendor/qcom/opensource/interfaces",
+    "remote": "omnirom",
+    "revision": "android-10"
+  }
+]

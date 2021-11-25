@@ -123,6 +123,7 @@ TW_Y_OFFSET := 80
 TW_H_OFFSET := -80
 endif
 TW_CUSTOM_CPU_TEMP_PATH := /sys/devices/virtual/thermal/thermal_zone9/temp
+TW_EXCLUDE_APEX := true
 
 TARGET_RECOVERY_DEVICE_MODULES += \
     android.hidl.allocator@1.0 \

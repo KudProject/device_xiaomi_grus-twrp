@@ -122,6 +122,7 @@ TW_CUSTOM_CPU_TEMP_PATH := /sys/devices/virtual/thermal/thermal_zone9/temp
 TARGET_RECOVERY_DEVICE_MODULES += \
     ashmemd \
     ashmemd_aidl_interface-cpp \
+    libandroidicu \
     libashmemd_client \
     libicui18n \
     libicuuc \

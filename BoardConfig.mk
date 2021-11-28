@@ -95,6 +95,10 @@ TARGET_COPY_OUT_VENDOR := vendor
 TW_INCLUDE_CRYPTO := true
 TW_INCLUDE_FBE := true
 
+# Verified Boot
+BOARD_AVB_ENABLE := true
+BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 2
+
 # TWRP specific build flags
 TW_THEME := portrait_hdpi
 RECOVERY_SDCARD_ON_DATA := true

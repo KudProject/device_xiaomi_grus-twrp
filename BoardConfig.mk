@@ -107,8 +107,10 @@ TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_SCREEN_BLANK_ON_BOOT := true
 TW_EXCLUDE_DEFAULT_USB_INIT := true
 TW_USE_TOOLBOX := true
+ifeq ($(SHRP_BUILD),)
 TW_Y_OFFSET := 80
 TW_H_OFFSET := -80
+endif
 TW_CUSTOM_CPU_TEMP_PATH := /sys/devices/virtual/thermal/thermal_zone9/temp
 
 TARGET_RECOVERY_DEVICE_MODULES += libicui18n
@@ -122,4 +124,5 @@ TW_RECOVERY_ADDITIONAL_RELINK_FILES += $(TARGET_OUT_SHARED_LIBRARIES)/libxml2.so
 
 TW_EXCLUDE_TWRPAPP := true
 
+-include $(DEVICE_PATH)/BoardConfigSHRP.mk
 -include vendor/kud/config/recovery.mk

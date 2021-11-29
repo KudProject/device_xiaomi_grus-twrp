@@ -1,0 +1,9 @@
+on init
+    start qseecom-service
+
+service qseecom-service /system/bin/vendor.qti.hardware.qseecom@1.0-service
+    user root
+    group root drmrpc
+    disabled
+    setenv LD_LIBRARY_PATH /vendor/lib64:/system/lib64
+    seclabel u:r:recovery:s0

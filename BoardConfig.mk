@@ -125,6 +125,7 @@ endif
 TW_CUSTOM_CPU_TEMP_PATH := /sys/devices/virtual/thermal/thermal_zone9/temp
 TW_EXCLUDE_APEX := true
 TW_USE_FSCRYPT_POLICY := 1
+TW_NO_EXFAT_FUSE := true
 
 TARGET_RECOVERY_DEVICE_MODULES += \
     android.hidl.allocator@1.0 \

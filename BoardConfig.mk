@@ -49,23 +49,28 @@ TARGET_NO_BOOTLOADER := true
 TARGET_USES_UEFI := true
 
 # Kernel
-BOARD_KERNEL_BASE := 0x00000000
-BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200n8 earlycon=msm_geni_serial,0xA90000 androidboot.hardware=qcom androidboot.console=ttyMSM0
-BOARD_KERNEL_CMDLINE += video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1
-BOARD_KERNEL_CMDLINE += service_locator.enable=1 androidboot.configfs=true androidboot.usbcontroller=a600000.dwc3 swiotlb=1
-BOARD_KERNEL_CMDLINE += firmware_class.path=/vendor/firmware_mnt/image loop.max_part=7
-BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
-BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
-BOARD_KERNEL_PAGESIZE := 4096
-BOARD_KERNEL_TAGS_OFFSET := 0x00000100
-BOARD_RAMDISK_OFFSET     := 0x01000000
-TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/Image.gz-dtb
-
-# Recovery DTBO
+BOARD_BOOT_HEADER_VERSION := 2
+BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_INCLUDE_RECOVERY_DTBO := true
-BOARD_BOOTIMG_HEADER_VERSION := 1
-BOARD_MKBOOTIMG_ARGS := --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $(BOARD_KERNEL_TAGS_OFFSET) --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
+BOARD_KERNEL_BASE := 0x00000000
+BOARD_KERNEL_CMDLINE := \
+    earlycon=msm_geni_serial,0xA90000 \
+    androidboot.hardware=qcom \
+    msm_rtb.filter=0x237 \
+    ehci-hcd.park=3 \
+    lpm_levels.sleep_disabled=1 \
+    service_locator.enable=1 \
+    androidboot.configfs=true \
+    androidboot.usbcontroller=a600000.dwc3 \
+    swiotlb=1 \
+    loop.max_part=7 \
+    androidboot.selinux=permissive
+BOARD_KERNEL_IMAGE_NAME := Image.gz
+BOARD_KERNEL_PAGESIZE := 4096
+BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
+BOARD_PREBUILT_DTBIMAGE_DIR := $(DEVICE_PATH)/prebuilt/dtb
 BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/dtbo.img
+TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/$(BOARD_KERNEL_IMAGE_NAME)
 
 # Platform
 TARGET_BOARD_PLATFORM := sdm710

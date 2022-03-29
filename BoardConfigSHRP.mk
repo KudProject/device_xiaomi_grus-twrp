@@ -1,4 +1,12 @@
-# Refer to https://shrp.github.io/#/guide?id=reference-configuration for details
+#
+# Copyright (C) 2021-2022 SkyHawk Recovery Project
+# Copyright (C) 2021-2022 KudProject Development
+#
+# SPDX-License-Identifer: Apache-2.0
+#
+
+# Refer to https://shrp.github.io/#/dtGuide for details on what these flags
+# below do when properly defined.
 
 ifneq ($(SHRP_BUILD),)
 
@@ -25,6 +33,7 @@ SHRP_STATUSBAR_RIGHT_PADDING := 24
 SHRP_STATUSBAR_LEFT_PADDING := 24
 SHRP_NOTCH := true
 SHRP_EXPRESS := true
+SHRP_EXPRESS_USE_DATA := 
 SHRP_DARK := true
 SHRP_CUSTOM_FLASHLIGHT := 
 SHRP_FONP_1 := 
@@ -43,6 +52,7 @@ SHRP_SKIP_DEFAULT_ADDON_3 :=
 INC_IN_REC_ADDON_3 := true
 SHRP_SKIP_DEFAULT_ADDON_4 := 
 INC_IN_REC_ADDON_4 := true
-INC_IN_REC_MAGISK := true
+INC_IN_REC_MAGISK := 
+SHRP_EXCLUDE_MAGISK_FLASH := true
 
 endif

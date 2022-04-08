@@ -18,3 +18,6 @@ PRODUCT_SHIPPING_API_LEVEL := 28
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     vendor/qcom/opensource/commonsys-intf/display
+
+# Include private recovery configuration
+-include vendor/kud/config/recovery.mk

@@ -156,4 +156,3 @@ TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
     $(TARGET_OUT_SYSTEM_EXT_SHARED_LIBRARIES)/vendor.display.config@2.0.so
 
 -include $(DEVICE_PATH)/BoardConfigSHRP.mk
--include vendor/kud/config/recovery.mk

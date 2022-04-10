@@ -12,6 +12,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     qcom_decrypt_fbe
 
+# Shipping API
+PRODUCT_SHIPPING_API_LEVEL := 28
+
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     vendor/qcom/opensource/commonsys-intf/display

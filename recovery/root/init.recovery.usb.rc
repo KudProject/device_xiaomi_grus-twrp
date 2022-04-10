@@ -39,7 +39,7 @@ on property:sys.usb.config=none && property:sys.usb.configfs=1
     write /config/usb_gadget/g1/UDC "none"
     setprop sys.usb.state ${sys.usb.config}
 
-on property:sys.usb.config=adb
+on property:sys.usb.config=adb && property:shrp.lock=0
     start adbd
 
 on property:sys.usb.ffs.ready=1 && property:sys.usb.config=adb && property:sys.usb.configfs=1
@@ -52,7 +52,7 @@ on property:sys.usb.ffs.ready=1 && property:sys.usb.config=adb && property:sys.u
     write /config/usb_gadget/g1/UDC ${sys.usb.controller}
     setprop sys.usb.state ${sys.usb.config}
 
-on property:sys.usb.config=sideload
+on property:sys.usb.config=sideload && property:shrp.lock=0
     start adbd
 
 on property:sys.usb.ffs.ready=1 && property:sys.usb.config=sideload && property:sys.usb.configfs=1
@@ -78,7 +78,7 @@ on property:sys.usb.config=mtp && property:sys.usb.configfs=1
     write /config/usb_gadget/g1/UDC ${sys.usb.controller}
     setprop sys.usb.state ${sys.usb.config}
 
-on property:sys.usb.config=mtp,adb
+on property:sys.usb.config=mtp,adb && property:shrp.lock=0
     start adbd
 
 on property:sys.usb.ffs.ready=1 && property:sys.usb.config=mtp,adb && property:sys.usb.configfs=1

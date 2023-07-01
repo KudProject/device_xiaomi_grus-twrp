@@ -10,6 +10,7 @@ PRODUCT_COPY_FILES += \
 
 # Crypto
 PRODUCT_PACKAGES += \
+    qcom_decrypt \
     qcom_decrypt_fbe
 
 # Shipping API
